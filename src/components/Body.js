@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import RestaurantCard from "./RestaurantCard";
+import Shimmer from "./Shimmer";
 // import { resList } from "../utils/mockData";
 
 const Body = () => {
@@ -80,7 +81,8 @@ const Body = () => {
 
 
 const [listOfRestaurant,setListOfRestaurant] = useState([]);
-
+const [searchText,setSearchText] = useState([]);
+// const [filteredRestaurant,setFilteredRestaurant] = useState([]);
 
 useEffect(()=>{
   // console.log("useEffect called")
@@ -105,9 +107,11 @@ const fetchData = async  () => {
     "https://corsproxy.io/?https://www.swiggy.com/dapi/restaurants/list/v5?lat=12.9351929&lng=77.62448069999999&page_type=DESKTOP_WEB_LISTING"
   );
   const res = await data.json();
+  //Optional Chaining
   setListOfRestaurant(
-    res.data.cards[5].card.card.gridElements.infoWithStyle.restaurants
+    res?.data?.cards[5]?.card?.card?.gridElements?.infoWithStyle?.restaurants
   );
+  // setFilteredRestaurant(res?.data?.cards[5]?.card?.card?.gridElements?.infoWithStyle?.restaurants)
   console.log(res);
 
 }
@@ -165,18 +169,33 @@ const fetchData = async  () => {
 
 // }
 
+//Conditional rendering
+// if(listOfRestaurant.length === 0) {
+//   // return <h1 style={{textAlign:"center"}}>Loading...</h1>
+//   return <Shimmer/>
+// }
 
-  return (
+// Conditional rendering
+
+  return (listOfRestaurant.length === 0) ? <Shimmer/> : (
     <div className="body-container">
-      {/* <div className="filter">
+      <div className="filter">
+        <div className="search">
+          <input type="text" className="search-box" placeholder="Search..." value={searchText} onChange={(e)=>setSearchText(e.target.value)} />
+          <button onClick={()=>{
+            console.log(searchText)
+            const filteredRestaurant = listOfRestaurant.filter((res) => res.info.name.toLowerCase().includes(searchText.toLowerCase()))
+            setListOfRestaurant(filteredRestaurant);
+          }}>Search</button>
+        </div>
         <button onClick={() => {
-          const filteredList = listOfRestaurant.filter((res) => res.data.avgRating > 4)
+          const filteredList = listOfRestaurant.filter((res) => res.info.avgRating > 4)
           console.log(listOfRestaurant)
           setListOfRestaurant(filteredList)
         }}>
           Top Rated Restaurants
         </button>
-      </div> */}
+      </div>
       <div className="restaurant-container">
         {/* Restaurant Card */}
 
@@ -197,7 +216,7 @@ const fetchData = async  () => {
 
               {listOfRestaurant.map((restaurant) => 
                 (
-                  <RestaurantCard resData={restaurant.info} key={restaurant.info.id} />
+                  <RestaurantCard resData={...restaurant?.info} key={restaurant?.info?.id} />
                 )
               )}
       </div>

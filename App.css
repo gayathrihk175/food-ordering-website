@@ -57,6 +57,7 @@
     display: grid;
     grid-template-rows: repeat(3,1fr);
     grid-template-columns: repeat(3,1fr);
+    
 }
 
 .restaurant-card {
@@ -71,3 +72,27 @@
     height: 350px;
 }
 
+.shimmer-container {
+    display: grid;
+    margin-left: 9rem;
+    grid-template-rows: repeat(3,ifr);
+    grid-template-columns: repeat(3,1fr);
+}
+
+.shimmer-card {
+    width: 300px;
+    margin: 20px;
+    height: 400px;
+    background-color: rgb(247, 239, 239);
+}
+
+.login-btn {
+    padding: 0px 20px;
+    margin-right: 1rem;
+    cursor: pointer;
+}
+
+/* .filter {
+    display: flex;
+    justify-content: space-between;
+} */

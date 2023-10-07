@@ -11,6 +11,7 @@ export const RestaurantCard = ({ resData }) => {
 
   return (
     <div className="restaurant-card" style={styleCard} >
+    
       {/* <img className="restaurant-image" src={CDN_URL+ cloudinaryImageId} alt="Meghana Foods" />
           <h3>{name}</h3>
           <h4>{cuisines.join(" , ")}</h4>
