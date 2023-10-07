@@ -1,0 +1,73 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+.header {
+    display: flex;
+    border: 1px solid black;
+    justify-content: space-between;
+}
+
+.logo-container > img {
+    width: 150px;
+}
+
+.nav-items {
+    display: flex;
+    align-items: center;
+}
+
+.nav-items > ul {
+    display: flex;
+    font-size: 24px;
+}
+
+.nav-items > ul > li {
+    margin: 10px;
+    padding: 10px;
+    list-style: none;
+}
+
+.body-container {
+    width: 80%;
+    margin: auto;
+}
+
+.filter {
+    margin: 2rem;
+}
+
+.filter  > button {
+    margin: auto;
+    border: none;
+    display: block;
+    color: white;
+    padding: 1rem 2rem;
+    border-radius: 19px;
+    background-color: orangered;
+}
+
+.filter  > button:hover {
+    background-color: orange;
+    transition: all 2s ease-in-out;
+}
+
+.restaurant-container {
+    gap: 3rem;
+    display: grid;
+    grid-template-rows: repeat(3,1fr);
+    grid-template-columns: repeat(3,1fr);
+}
+
+.restaurant-card {
+    padding: 1rem;
+    border-radius: 1rem;
+    transition: all 1s ease-in-out;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}
+
+.restaurant-card  > img {
+    width: 300px;
+    height: 350px;
+}
+
