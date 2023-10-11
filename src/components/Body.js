@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import RestaurantCard from "./RestaurantCard";
 import Shimmer from "./Shimmer";
+import { Link } from "react-router-dom";
 // import { resList } from "../utils/mockData";
 
 const Body = () => {
@@ -83,6 +84,11 @@ const Body = () => {
 const [listOfRestaurant,setListOfRestaurant] = useState([]);
 const [searchText,setSearchText] = useState([]);
 // const [filteredRestaurant,setFilteredRestaurant] = useState([]);
+
+
+// If no dependency array ==> useEffect is called on every render
+// In case of empty dependency array ==> useEffect is called only on initial render and just once, when the component is rendered the first time
+// In case of something as a dependency ==> useEffect is called when that dependency's state changes.
 
 useEffect(()=>{
   // console.log("useEffect called")
@@ -216,7 +222,7 @@ const fetchData = async  () => {
 
               {listOfRestaurant.map((restaurant) => 
                 (
-                  <RestaurantCard resData={...restaurant?.info} key={restaurant?.info?.id} />
+                  <Link key={restaurant?.info?.id} to={"/restaurant/"+restaurant?.info?.id}><RestaurantCard resData={...restaurant?.info} /></Link>
                 )
               )}
       </div>
