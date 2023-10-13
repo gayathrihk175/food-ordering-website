@@ -2,7 +2,7 @@ export const CDN_URL =
   "https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_660/";
 
 export const LOGO_URL =
-  "https://cdn.dribbble.com/users/1635051/screenshots/4291569/socio_curry_logo-01.png";
+  "https://img.freepik.com/premium-vector/good-food-logo-template_79169-17.jpg";
 
 export const MENU_API =
   "https://corsproxy.io/?https://www.swiggy.com/dapi/restaurants/list/v5?lat=21.1702401&lng=72.83106070000001&page_type=DESKTOP_WEB_LISTING";
